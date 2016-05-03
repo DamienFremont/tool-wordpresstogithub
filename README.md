@@ -18,3 +18,7 @@ A simple batch to convert wordpress post to a README.md for GitHub:
 ## CLI
 
 ![alt text](screenshots/ScreenShot005.png)
+
+![alt text](screenshots/ScreenShot003.png)
+
+![alt text](screenshots/ScreenShot004.png)
