@@ -165,7 +165,7 @@ public class App {
 		case "img":
 			String src = i.getAttribute("src");
 			String uri = downloadImg(src);
-			writer.println(format("![alt text][%s]", uri));
+			writer.println(format("![alt text](%s)", uri));
 			break;
 		case "a":
 			if (hasNotChilds(i))
