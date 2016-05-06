@@ -7,8 +7,7 @@ public class Batch {
 		for (String[] url_dir : wordUrl_gitDir_list) {
 			String url = url_dir[0];
 			String dir = url_dir[1];
-			String proxy = null;
-			new Downloader(url, proxy, dir).down();;
+			new Downloader(url, dir).down();;
 		}
 	}
 

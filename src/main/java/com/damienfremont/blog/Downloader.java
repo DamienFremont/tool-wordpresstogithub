@@ -21,7 +21,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
-import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import com.google.common.base.Preconditions;
@@ -29,12 +28,10 @@ import com.google.common.base.Preconditions;
 public class Downloader {
 
 	String url;
-	String proxy;
 	String target;
 
-	public Downloader(String url, String proxy, String target) {
+	public Downloader(String url, String target) {
 		this.url = url;
-		this.proxy = proxy;
 		this.target = target;
 	}
 
@@ -57,18 +54,18 @@ public class Downloader {
 		System.setProperty("jsse.enableSNIExtension", "false");
 
 		DesiredCapabilities cap = new DesiredCapabilities();
-		if (isNotEmpty(proxy)) {
-			String p_host = proxy.split(":")[0];
-			String p_port = proxy.split(":")[1];
-			System.setProperty("http.proxyHost", p_host);
-			System.setProperty("http.proxyPort", p_port);
-			System.setProperty("https.proxyHost", p_host);
-			System.setProperty("https.proxyPort", p_port);
-
-			org.openqa.selenium.Proxy p = new org.openqa.selenium.Proxy();
-			p.setHttpProxy(proxy).setFtpProxy(proxy).setSslProxy(proxy);
-			cap.setCapability(CapabilityType.PROXY, p);
-		}
+		// if (isNotEmpty(proxy)) {
+		// String p_host = proxy.split(":")[0];
+		// String p_port = proxy.split(":")[1];
+		// System.setProperty("http.proxyHost", p_host);
+		// System.setProperty("http.proxyPort", p_port);
+		// System.setProperty("https.proxyHost", p_host);
+		// System.setProperty("https.proxyPort", p_port);
+		//
+		// org.openqa.selenium.Proxy p = new org.openqa.selenium.Proxy();
+		// p.setHttpProxy(proxy).setFtpProxy(proxy).setSslProxy(proxy);
+		// cap.setCapability(CapabilityType.PROXY, p);
+		// }
 		return cap;
 	}
 
