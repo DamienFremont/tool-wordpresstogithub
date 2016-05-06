@@ -166,6 +166,7 @@ public class App {
 			String src = i.getAttribute("src");
 			String uri = downloadImg(src);
 			writer.println(format("![alt text](%s)", uri));
+			writer.println(" ");
 			break;
 		case "a":
 			if (hasNotChilds(i))
@@ -177,12 +178,12 @@ public class App {
 			}
 			break;
 		case "p":
-			if (hasNotChilds(i))
-				writer.println(i.getText());
-			else {
+			if (!hasNotChilds(i)) {
 				List<WebElement> p_childs = getChilds(i);
 				eval(writer, p_childs);
+				writer.println(i.getText());
 			}
+			writer.println(i.getText());
 			writer.println(" ");
 			break;
 		case "div":
