@@ -181,7 +181,6 @@ public class App {
 			if (!hasNotChilds(i)) {
 				List<WebElement> p_childs = getChilds(i);
 				eval(writer, p_childs);
-				writer.println(i.getText());
 			}
 			writer.println(i.getText());
 			writer.println(" ");
