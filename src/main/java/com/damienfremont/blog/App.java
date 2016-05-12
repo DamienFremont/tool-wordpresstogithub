@@ -9,20 +9,18 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import org.apache.commons.lang3.StringUtils;
-
 public class App {
 
 	static String url;
 	static String target;
 
 	public static void main(String[] args) throws Exception {
-		String csv = arg("csv", args);
+		String csv = ReadArgs.arg("csv", args);
 		if(isNoneEmpty(csv)) {
 			executeBatch(csv);
 		} else {
-			url = arg("url", args);
-			target = arg("target", args, "README.md");
+			url = ReadArgs.arg("url", args);
+			target = ReadArgs.arg("target", args, "README.md");
 			execute();			
 		}		
 	}
@@ -60,18 +58,6 @@ public class App {
 			JOptionPane.showConfirmDialog(null, "Url cannot be empty!", "Error", JOptionPane.DEFAULT_OPTION,
 					JOptionPane.PLAIN_MESSAGE);
 		}
-	}
-
-	private static String arg(final String expectedKey, final String[] args, String... defaultValue) {
-		for (int i = 0; i < args.length; i++) {
-			String key = args[i];
-			if (("-" + expectedKey).equals(key)) {
-				String val = args[i + 1];
-				System.out.println(key + "=" + val);
-				return val;
-			}
-		}
-		return defaultValue != null && defaultValue.length > 0 ? defaultValue[0] : null;
 	}
 
 }

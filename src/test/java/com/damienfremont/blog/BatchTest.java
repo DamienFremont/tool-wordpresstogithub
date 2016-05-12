@@ -15,4 +15,10 @@ public class BatchTest {
 		Batch.main(wordUrl_gitDir_list);
 	}
 
+	@Test
+	public void test_csv() throws Exception {
+		Batch.main(new String[] { "-csv",
+				"C:\\Users\\Damien\\git\\tool-wordpresstogithub\\src\\test\\java\\com\\damienfremont\\blog\\AppTest.csv" });
+	}
+
 }
