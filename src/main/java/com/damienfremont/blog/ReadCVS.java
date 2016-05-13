@@ -42,7 +42,9 @@ public class ReadCVS {
 			br = new BufferedReader(new FileReader(csvFile));
 			while ((line = br.readLine()) != null) {
 				String[] columns = line.split(cvsSplitBy);
-				tmp.add(ImmutableList.of(columns[0], columns[1]));
+				String arg_url = columns[0].replaceAll("\t", "");
+				String arg_path = columns[1].replaceAll("\t", "");
+				tmp.add(ImmutableList.of(arg_url, arg_path));
 			}
 			return tmp;
 		} catch (Exception e) {

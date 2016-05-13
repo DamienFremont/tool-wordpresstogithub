@@ -88,10 +88,18 @@ public class Downloader {
 		writer.println("======");
 		writer.println(" ");
 
+		// TODO tags, date, author
+
 		WebElement content = article.findElement(By.cssSelector("div.entry-content"));
 
 		List<WebElement> childs = getChilds(content);
 		eval(writer, childs);
+
+		// SOURCE
+		writer.println(" ");
+		writer.println(format("[%s](%s)", url, url));
+		writer.println(" ");
+
 		writer.close();
 	}
 
@@ -150,7 +158,7 @@ public class Downloader {
 				writeCode(writer, i);
 				writer.println(" ");
 			} else if (isWordpress(i)) {
-				System.out.println("skipping wordpress part: "+i);
+				System.out.println("skipping wordpress part: " + i);
 			} else {
 				List<WebElement> a_childs = getChilds(i);
 				eval(writer, a_childs);
@@ -199,8 +207,10 @@ public class Downloader {
 			type = "javascript";
 		} else if (classes.contains("css")) {
 			type = "css";
+		} else if (classes.contains("plain")) {
+			type = "";
 		}
-		Preconditions.checkNotNull(type, "checkNotNull codeType" + classes);
+		Preconditions.checkNotNull(type, "checkNotNull codeType: " + classes);
 		return type;
 	}
 
