@@ -116,6 +116,7 @@ public class Downloader {
 			writer.println(format("## %s", i.getText()));
 			writer.println(" ");
 			break;
+		case "ol":
 		case "ul":
 			for (WebElement li : getChilds(i)) {
 				writer.println(format("* %s", li.getText()));
@@ -148,15 +149,28 @@ public class Downloader {
 			if (isCode(i)) {
 				writeCode(writer, i);
 				writer.println(" ");
+			} else if (isWordpress(i)) {
+				System.out.println("skipping wordpress part: "+i);
+			} else {
+				List<WebElement> a_childs = getChilds(i);
+				eval(writer, a_childs);
 			}
 			break;
 		}
 	}
 
+	private boolean isWordpress(WebElement i) {
+		try {
+			boolean share = i.getAttribute("class").contains("share");
+			return share;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
 	private void writeCode(PrintWriter writer, WebElement i) {
-		WebElement code = i.findElement(By.cssSelector(".syntaxhighlighter"));
-		String type = getCodeType(code);
-		List<String> lines = getCodeLines(code);
+		String type = getCodeType(i);
+		List<String> lines = getCodeLines(i);
 		writer.println("```" + type);
 		for (String line : lines) {
 			writer.println(line);
@@ -192,7 +206,7 @@ public class Downloader {
 
 	private boolean isCode(WebElement i) {
 		try {
-			return i.findElement(By.cssSelector(".syntaxhighlighter")) != null;
+			return i.getAttribute("class").contains("syntaxhighlighter");
 		} catch (Exception e) {
 			return false;
 		}
