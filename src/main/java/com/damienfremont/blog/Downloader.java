@@ -146,7 +146,7 @@ public class Downloader {
 			}
 			break;
 		case "p":
-			// TODO links in p	
+			// TODO links in p
 			if (!hasNotChilds(i)) {
 				List<WebElement> p_childs = getChilds(i);
 				eval(writer, p_childs);
@@ -208,7 +208,9 @@ public class Downloader {
 			type = "javascript";
 		} else if (classes.contains("css")) {
 			type = "css";
-		} else if (classes.contains("plain")) {
+		} else if (classes.contains("ruby")) {
+			type = "ruby";
+		} else { // PLAIN
 			type = "";
 		}
 		Preconditions.checkNotNull(type, "checkNotNull codeType: " + classes);
