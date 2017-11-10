@@ -155,6 +155,11 @@ public class Downloader {
 			writer.println(i.getText());
 			writer.println(" ");
 			break;
+		case "pre":
+			writer.println("```");
+			writer.println(i.getText());
+			writer.println("```");
+			break;
 		case "div":
 			if (isCode(i)) {
 				writeCode(writer, i);
@@ -225,7 +230,7 @@ public class Downloader {
 			return false;
 		}
 	}
-
+	
 	static SimpleDateFormat sdf = new SimpleDateFormat("yyMMddHHmmssSSS");
 
 	private String downloadImg(String imgUrl) throws MalformedURLException, IOException {
