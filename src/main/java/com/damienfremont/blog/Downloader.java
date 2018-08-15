@@ -97,7 +97,7 @@ public class Downloader {
 
 		// SOURCE
 		writer.println(" ");
-		writer.println("## Origin");
+		writer.println("## Post on Wordpress");
 		writer.println(format("[%s](%s)", url, url));
 		writer.println(" ");
 

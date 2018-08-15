@@ -15,7 +15,7 @@ public class AppTest {
 		App.main(new String[] { //
 				//
 				"-url", //
-				"https://damienfremont.com/2015/10/13/javaee-angularjs-bootstrap-integration/" //
+				"https://damienfremont.com/2015/09/01/git-the-simple-guide/" //
 				, //
 				"-target", //
 				"target" //
